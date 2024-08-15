@@ -1,0 +1,45 @@
+// screen sizes
+
+// small-screen
+@mixin small-screen {
+  @media only screen and (min-width: 576px) {
+    @content;
+  }
+}
+
+// medium-screen
+@mixin medium-screen {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+// normal-screen
+@mixin normal-screen {
+  @media only screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+// large-screen
+@mixin large-screen {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+// xLarge-screen
+@mixin xLarge-screen {
+  @media only screen and (min-width: 1680px) {
+    @content;
+  }
+}
+
+// k-screen
+@mixin k-screen {
+  @media only screen and (min-width: 1921px) {
+    @content;
+  }
+}
+
+
