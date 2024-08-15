@@ -1,4 +1,29 @@
 @import "app";
-p{
-  font-family: $inter-bold;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem;
+  background-color: transparent;
+  height: 80px;
+  border-bottom: 1px solid $gray-light;
+
+  .header-menu {
+    img {
+      width: 32px;
+      height: 32px;
+    }
+    .title {
+      font-family: $inter-medium;
+      color: $black;
+      margin-right: 4rem;
+    }
+    .home {
+      font-family: $inter-medium;
+      color: $gray-light;
+    }
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 }

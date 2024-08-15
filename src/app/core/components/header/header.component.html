@@ -1,1 +1,9 @@
-<p>header works!</p>
+<div class="header">
+    <div class="header-menu">
+        <img src="assets/images/logo.png" alt="Logo" />
+        <div class="title">ClicTik</div>
+        <div class="home">Home</div>
+    </div>
+<!--    here we can inject the template from any component-->
+        <ng-container *ngTemplateOutlet="template"></ng-container>
+</div>
