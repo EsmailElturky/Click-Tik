@@ -41,8 +41,8 @@
               "includePaths": ["src/assets/", "src/assets/styles/"]
             },
             "styles": [
-              "src/styles.scss",
-              "src/assets/styles/layout.scss"
+              "src/assets/styles/layout.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           },

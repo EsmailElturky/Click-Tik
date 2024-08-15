@@ -1,0 +1,14 @@
+@import "typography";
+
+.font-regular {
+  font-family: $inter-regular; // weight: 400
+}
+.font-medium {
+  font-family: $inter-medium; // weight: 500
+}
+.font-semi-bold {
+  font-family: $inter-semi-bold; // weight: 600
+}
+.font-bold {
+  font-family: $inter-bold; // weight: 700
+}

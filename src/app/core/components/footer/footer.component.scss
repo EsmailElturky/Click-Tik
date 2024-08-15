@@ -1,0 +1,10 @@
+@import 'app';
+.footer {
+  background-color: $blue-dark;
+  .title {
+    color: $white;
+  }
+  .year {
+    color: $gray-medium;
+  }
+}

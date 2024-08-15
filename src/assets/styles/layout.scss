@@ -50,5 +50,26 @@ body {
         overflow-y: auto;
       }
     }
+
+    .header, .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6rem;
+
+      .menu {
+        img {
+          width: 32px;
+          height: 32px;
+        }
+        .home {
+          font-family: $inter-medium;
+          color: $gray-light;
+        }
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+      }
+    }
   }
 }
