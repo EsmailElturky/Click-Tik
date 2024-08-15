@@ -101,6 +101,13 @@ section {
   display: block;
 }
 
+/* Set box-sizing globally */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   line-height: 1;
   background-color: #f2f2f2 !important;

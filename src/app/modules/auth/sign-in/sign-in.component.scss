@@ -1,0 +1,42 @@
+@import "app";
+.sign-in {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  img {
+    width: 48px;
+    height: 48px;
+  }
+  .form-title {
+    font-size: 30px;
+    color: $blue;
+  }
+  .welcome-text {
+    font-size: 16px;
+    color: $gray-light;
+  }
+  form {
+    width: 300px;
+  }
+  @include small-screen {
+    form {
+      width: 360px;
+    }
+  }
+  button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $green-light;
+    padding: 1rem;
+    border: unset;
+    border-radius: 8px;
+  }
+}
+.login {
+  color: $gray-light;
+}

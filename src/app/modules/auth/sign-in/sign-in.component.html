@@ -1,1 +1,32 @@
-<h1>sign in</h1>
+<div class="sign-in">
+  <div class="logo">
+    <img src="assets/images/logo.png" alt="logo" />
+  </div>
+  <div class="form-title font-bold">Log in to your account</div>
+  <div class="welcome-text font-regular">
+    Welcome back! Please enter your details.
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <app-input-text
+      [label]="'Email'"
+      [formControlName]="'email'"
+      [type]="'text'"
+      [placeholder]="'enter your email'"
+      [errorMessages]="errorMessages"
+      [formControl]="formControlData('email')"
+    ></app-input-text>
+
+    <app-input-text
+      [label]="'Password'"
+      [formControlName]="'password'"
+      [type]="'password'"
+      [placeholder]="'enter your password'"
+      [errorMessages]="errorMessages"
+      [formControl]="formControlData('password')"
+    ></app-input-text>
+    <button type="submit" class="font-medium">Sign in</button>
+  </form>
+</div>
+<ng-template #headerTemplate>
+  <div class="login font-medium">Login</div>
+</ng-template>
