@@ -6,6 +6,25 @@ const appRoutes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    children: [
+      {
+        path: 'auth',
+        loadChildren: () =>
+          import('./modules/auth/auth.module').then((m) => m.AuthModule),
+      },
+      {
+        path: 'products',
+        loadChildren: () =>
+          import('./modules/products/products.module').then(
+            (m) => m.ProductsModule,
+          ),
+      },
+      { path: '', redirectTo: '/auth', pathMatch: 'full' },
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
 
