@@ -36,6 +36,9 @@
     border: unset;
     border-radius: 8px;
   }
+  button:hover {
+    cursor: pointer;
+  }
 }
 .login {
   color: $gray-light;
