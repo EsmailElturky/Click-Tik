@@ -1,0 +1,99 @@
+@import "app";
+.product-card {
+  width: 282px;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: $white;
+  color: $blue-light;
+}
+@include large-screen {
+  .product-card {
+    width: 320px;
+  }
+}
+
+.product-image {
+  position: relative;
+}
+
+.product-image img {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: $green-light;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.product-description {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.price {
+  margin-bottom: 15px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.current-price {
+  font-size: 14px;
+}
+
+.additional-info {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+.rating-stars {
+  color: #ffbf00;
+}
+
+.reviews-count {
+  margin-left: 5px;
+  color: #999;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: $green-light;
+  color: $blue-light;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #20a597;
+}

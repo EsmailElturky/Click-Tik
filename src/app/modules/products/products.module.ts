@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { SharedModule } from '../../shared/shared.module';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ProductsComponent],
-  imports: [CommonModule, ProductsRoutingModule, SharedModule],
+  declarations: [ProductsComponent, ProductCardComponent],
+  imports: [CommonModule, ProductsRoutingModule, SharedModule, FormsModule],
 })
 export class ProductsModule {}
