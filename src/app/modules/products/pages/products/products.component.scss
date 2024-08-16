@@ -1,0 +1,58 @@
+@import "app";
+.products-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  .cart {
+    display: flex;
+    gap: 1rem;
+    .image {
+      position: relative;
+      img {
+        width: 19px;
+        height: 15px;
+        margin-top: 4px;
+      }
+      .count {
+        text-align: center;
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+        border: 2px solid $white;
+        border-radius: 8px;
+        background-color: $green-light;
+        position: absolute;
+        top: -4px;
+        left: 10px;
+      }
+    }
+    p {
+      font-family: $inter-medium;
+      font-size: 16px;
+      color: $gray-light;
+    }
+  }
+  //use ng deep overWrite the styles of the input-text component
+  ::ng-deep app-input-text {
+    .input-text {
+      input {
+        margin: unset;
+        padding: 5px 10px;
+        width: 60vw;
+      }
+      @include small-screen {
+        input {
+          width: 319px;
+        }
+      }
+      .placeholder {
+        color: $gray;
+        font-family: $inter-medium;
+        line-height: 14px;
+        font-size: 14px;
+      }
+    }
+  }
+}

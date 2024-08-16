@@ -4,10 +4,10 @@
            [class.disabled]="disabled" [(ngModel)]="value" autocomplete="off"
            [type]="type" [placeholder]="placeholder"
            [disabled]="disabled" (input)="detectValueChange($event.target)"
-           [class.has-error]="(formControl.touched || formControl.dirty) && !formControl.valid">
+           [class.has-error]="(formControl?.touched || formControl?.dirty) && !formControl.valid">
 </div>
 
-<div *ngIf="(formControl.touched || formControl.dirty) && !formControl.valid" class="invalid">
+<div *ngIf="(formControl?.touched || formControl?.dirty)  && !formControl.valid" class="invalid">
     <div *ngIf="formControl.errors['required']">{{errorMessages[formControlName]?.required}}</div>
     <div *ngIf="formControl.errors['minlength']">{{errorMessages[formControlName]?.minlength}}</div>
     <div *ngIf="formControl.errors['maxlength']">{{errorMessages[formControlName]?.maxlength}}</div>

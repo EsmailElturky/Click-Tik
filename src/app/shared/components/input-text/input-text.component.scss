@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
   input {
     width: 100%;
     background-color: $white;
@@ -20,7 +21,20 @@
     &.has-error {
       border: 1px solid $error;
     }
+    &.with-icon {
+      background-image: url('/assets/images/search-icon.png');
+      background-repeat: no-repeat;
+      background-position: 8px center; /* Adjusted for vertical centering */
+      text-indent: 20px;
+    }
+    &.with-icon:focus{
+      background-image:none;
+      text-indent: unset;
+    }
   }
+
+
+
 }
 label {
   font-family: $inter-medium;

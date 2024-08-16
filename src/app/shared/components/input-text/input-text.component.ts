@@ -35,7 +35,9 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
   constructor() {}
 
   ngOnInit(): void {
-    this.formControlName = this.getFormControlName(this.formControl);
+    if (this.formControl) {
+      this.formControlName = this.getFormControlName(this.formControl);
+    }
   }
 
   /* Get Form Control Name From Form Group */

@@ -1,1 +1,20 @@
-<p>products works!</p>
+<div class="products">
+
+</div>
+<ng-template #headerTemplate>
+    <div class="products-menu">
+        <app-input-text
+                [type]="'text'"
+                [placeholder]="'search'"
+                [inputCustomClass]="'with-icon'"
+        ></app-input-text>
+        <div class="cart">
+            <div class="image">
+                <img src="assets/images/cart.png" alt="logo" />
+                <div *ngIf="count" class="count">count</div>
+            </div>
+            <p>Account</p>
+        </div>
+    </div>
+
+</ng-template>
