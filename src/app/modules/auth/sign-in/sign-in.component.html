@@ -8,12 +8,12 @@
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <app-input-text
-      [label]="'Email'"
-      [formControlName]="'email'"
+      [label]="'Username'"
+      [formControlName]="'username'"
       [type]="'text'"
-      [placeholder]="'enter your email'"
+      [placeholder]="'enter your username'"
       [errorMessages]="errorMessages"
-      [formControl]="formControlData('email')"
+      [formControl]="formControlData('username')"
     ></app-input-text>
 
     <app-input-text

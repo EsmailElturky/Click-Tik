@@ -26,20 +26,12 @@
     </div>
     <div class="products-cards">
       <div class="products-list">
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
+        <app-product-card (addToCart)="addToCart()"></app-product-card>
+        <app-product-card (addToCart)="addToCart()"></app-product-card>
+        <app-product-card (addToCart)="addToCart()"></app-product-card>
+        <app-product-card (addToCart)="addToCart()"></app-product-card>
+        <app-product-card (addToCart)="addToCart()"></app-product-card>
+        <app-product-card (addToCart)="addToCart()"></app-product-card>
       </div>
       <div class="pagination"></div>
     </div>
@@ -55,7 +47,7 @@
     <div class="cart">
       <div class="image">
         <img src="assets/images/cart.png" alt="logo" />
-        <div *ngIf="count" class="count">count</div>
+        <div *ngIf="count" class="count">{{ count }}</div>
       </div>
       <p>Account</p>
     </div>

@@ -51,4 +51,8 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.templateToPass = this.headerTemplate;
   }
+  addToCart() {
+    this.count++;
+    console.log('Product added to cart', this.count);
+  }
 }
