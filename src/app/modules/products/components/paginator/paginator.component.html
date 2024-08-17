@@ -1,0 +1,17 @@
+<div class="paginator">
+    <button class="arrow" (click)="prevPage()" [disabled]="currentPage === 1">
+        &lt;
+    </button>
+
+    <button
+            *ngFor="let page of pages"
+            (click)="changePage(page)"
+            [class.active]="page === currentPage"
+            [disabled]="page === '...'">
+        {{ page }}
+    </button>
+
+    <button class="arrow" (click)="nextPage()" [disabled]="currentPage === totalPages">
+        &gt;
+    </button>
+</div>

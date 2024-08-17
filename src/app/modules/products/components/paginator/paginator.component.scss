@@ -1,0 +1,30 @@
+@import "app";
+.paginator {
+  display: flex;
+  align-items: center;
+
+  button {
+    background-color: $white;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 15px;
+    padding: 6px 10px;
+    &.active {
+      background-color: $green-light;
+      color: white;
+      font-weight: bold;
+    }
+
+    &.arrow {
+      font-size: 15px;
+      padding: 6px 10px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}
