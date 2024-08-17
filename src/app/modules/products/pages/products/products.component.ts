@@ -46,7 +46,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
       this.toaster.showError(error);
     });
     this.total$.subscribe((total) => {
-      this.totalPages = total / this.limit;
+      this.totalPages = Math.ceil( total / this.limit);
     });
   }
 

@@ -34,7 +34,7 @@
             <div class="pagination">
                 <app-paginator
                         *ngIf="totalPages > 1"
-                        [totalPages]="10"
+                        [totalPages]="totalPages"
                         [currentPage]="currentPage"
                         (pageChange)="onPageChange($event)"></app-paginator>
             </div>
