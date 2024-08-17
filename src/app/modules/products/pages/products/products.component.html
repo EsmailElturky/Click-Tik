@@ -10,31 +10,25 @@
     <div class="filter">
       <div class="font-bold">Products</div>
       <ul>
-        <li *ngFor="let category of categories" class="font-regular">
+        <li *ngFor="let category of categories$ | async" class="font-regular">
           <input
             type="radio"
-            [id]="category.name"
+            [id]="category"
             name="productCategory"
-            [value]="category.name"
+            [value]="category"
             [(ngModel)]="selectedCategory"
+            (change)="onCategoryChange(selectedCategory)"
           />
-          <label [for]="category.name">
-            {{ category.name }} ({{ category.count }})
-          </label>
+          <label [for]="category">{{ category }} (12)</label>
         </li>
       </ul>
     </div>
     <div class="products-cards">
       <div class="products-list">
-        <app-product-card (addToCart)="addToCart()"></app-product-card>
-        <app-product-card (addToCart)="addToCart()"></app-product-card>
-        <app-product-card (addToCart)="addToCart()"></app-product-card>
-        <app-product-card (addToCart)="addToCart()"></app-product-card>
-        <app-product-card (addToCart)="addToCart()"></app-product-card>
-        <app-product-card (addToCart)="addToCart()"></app-product-card>
+        <app-product-card *ngFor="let product of products$ | async" [product]="product" (addToCart)="addToCart($event)"></app-product-card>
       </div>
         <div class="pagination">
-            <app-paginator></app-paginator>
+            <app-paginator *ngIf="totalPages > 1" [totalPages]="10" [currentPage]="currentPage" (pageChange)="onPageChange($event)" ></app-paginator>
         </div>
     </div>
   </div>
@@ -49,7 +43,7 @@
     <div class="cart">
       <div class="image">
         <img src="assets/images/cart.png" alt="logo" />
-        <div *ngIf="count" class="count">{{ count }}</div>
+        <div *ngIf="(cart$|async).length as numberOfProducts" class="count">{{ numberOfProducts }}</div>
       </div>
       <p>Account</p>
     </div>

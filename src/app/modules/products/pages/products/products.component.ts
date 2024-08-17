@@ -5,7 +5,13 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Product } from '../../interfaces/product.interface';
+import { Store } from '@ngrx/store';
+import { ProductsState } from '../../store/products.reducer';
+import * as ProductSelectors from '../../store/products.selectors';
+import * as ProductActions from '../../store/products.actions';
+import { ToasterService } from '../../../../shared/services/toaster/toaster.service';
 
 @Component({
   selector: 'app-products',
@@ -15,44 +21,76 @@ import { FormControl } from '@angular/forms';
 export class ProductsComponent implements OnInit, AfterViewInit {
   // A reference to the header template.
   @ViewChild('headerTemplate') headerTemplate!: TemplateRef<any>;
+
   templateToPass!: TemplateRef<any>;
-  count = 0;
+  totalPages = 1;
+  currentPage = 1;
+  limit = 10;
   category = 'smart phones';
   searchText = 'Iphone';
-  categories = [
-    { name: 'All', count: 240 },
-    { name: 'Smartphones', count: 9 },
-    { name: 'Laptops', count: 12 },
-    { name: 'Fragrances', count: 8 },
-    { name: 'Skincare', count: 16 },
-    { name: 'Groceries', count: 12 },
-    { name: 'Home decoration', count: 4 },
-    { name: 'Furniture', count: 4 },
-    { name: 'Tops', count: 42 },
-    { name: 'Women’s dresses', count: 40 },
-    { name: 'Women’s shoes', count: 12 },
-    { name: 'Men’s shirts', count: 2 },
-    { name: 'Men’s shoes', count: 10 },
-    { name: 'Men’s watches', count: 15 },
-    { name: 'Women’s watches', count: 7 },
-    { name: 'Women’s bags', count: 9 },
-    { name: 'Women’s jewellery', count: 5 },
-    { name: 'Sunglasses', count: 13 },
-    { name: 'Automotive', count: 6 },
-    { name: 'Motorcycle', count: 14 },
-    { name: 'Lighting', count: 0 },
-  ];
-
   selectedCategory = 'All';
-  constructor() {}
 
-  ngOnInit(): void {}
+  products$: Observable<Product[]>;
+  categories$: Observable<string[]>;
+  selectedCategory$: Observable<string>;
+  error$: Observable<string>;
+  cart$: Observable<Product[]>;
+  total$: Observable<number>;
+
+  constructor(
+    private store: Store<ProductsState>,
+    private toaster: ToasterService,
+  ) {
+    this.products$ = this.store.select(ProductSelectors.selectAllProducts);
+    this.categories$ = this.store.select(ProductSelectors.selectCategories);
+    this.selectedCategory$ = this.store.select(
+      ProductSelectors.selectSelectedCategory,
+    );
+    this.error$ = this.store.select(ProductSelectors.selectError);
+    this.cart$ = this.store.select(ProductSelectors.selectCart);
+    this.total$ = this.store.select(ProductSelectors.selectTotal);
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(ProductActions.loadProducts({ limit: 10, skip: 0 }));
+    this.store.dispatch(ProductActions.loadCategories());
+    this.error$.subscribe((error) => {
+      this.toaster.showError(error);
+    });
+    this.total$.subscribe((total) => {
+      this.totalPages = total / this.limit;
+    });
+  }
+
+  onCategoryChange(category: string): void {
+    if (category === 'All') {
+      this.store.dispatch(
+        ProductActions.loadProducts({ limit: 10, skip: 0, search: '' }),
+      );
+    } else {
+      this.store.dispatch(ProductActions.selectCategory({ category }));
+    }
+  }
+
+  onSearchChange(search: string): void {
+    console.log(search);
+    this.store.dispatch(ProductActions.searchProducts({ search }));
+    this.store.dispatch(
+      ProductActions.loadProducts({ limit: 10, skip: 0, search }),
+    );
+  }
+
+  addToCart(product: Product): void {
+    this.store.dispatch(ProductActions.addToCart({ product }));
+  }
+
+  onPageChange(page: number): void {
+    const limit = 10;
+    const skip = (page - 1) * limit;
+    this.store.dispatch(ProductActions.loadProducts({ limit, skip }));
+  }
 
   ngAfterViewInit() {
     this.templateToPass = this.headerTemplate;
-  }
-  addToCart() {
-    this.count++;
-    console.log('Product added to cart', this.count);
   }
 }

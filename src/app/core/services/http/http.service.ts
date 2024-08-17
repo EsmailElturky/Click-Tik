@@ -29,12 +29,7 @@ export class HttpService {
         if (showLoader) {
           this.loaderService.stopLoader();
         }
-
-        if (!response.isValid) {
-          return this.handleHttpError(response as any, showLoader);
-        } else {
-          return response;
-        }
+        return response;
       }),
       catchError((error) => {
         console.log('error');
