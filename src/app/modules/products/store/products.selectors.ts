@@ -19,11 +19,6 @@ export const selectSelectedCategory = createSelector(
   (state: ProductsState) => state.selectedCategory,
 );
 
-export const selectSearch = createSelector(
-  selectProductsState,
-  (state: ProductsState) => state.search,
-);
-
 export const selectTotal = createSelector(
   selectProductsState,
   (state: ProductsState) => state.total,

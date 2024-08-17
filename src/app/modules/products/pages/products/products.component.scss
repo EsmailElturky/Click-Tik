@@ -90,6 +90,11 @@
         justify-content: center;
         gap: 2rem;
       }
+      @include large-screen {
+        .products-list {
+          justify-content: flex-start;
+        }
+      }
     }
     .pagination {
       display: flex;

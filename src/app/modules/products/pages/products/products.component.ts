@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../../interfaces/product.interface';
 import { Store } from '@ngrx/store';
@@ -26,8 +20,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   totalPages = 1;
   currentPage = 1;
   limit = 10;
-  category = 'smart phones';
-  searchText = 'Iphone';
+  searchText = '';
   selectedCategory = 'All';
 
   products$: Observable<Product[]>;
@@ -37,15 +30,10 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   cart$: Observable<Product[]>;
   total$: Observable<number>;
 
-  constructor(
-    private store: Store<ProductsState>,
-    private toaster: ToasterService,
-  ) {
+  constructor(private store: Store<ProductsState>, private toaster: ToasterService) {
     this.products$ = this.store.select(ProductSelectors.selectAllProducts);
     this.categories$ = this.store.select(ProductSelectors.selectCategories);
-    this.selectedCategory$ = this.store.select(
-      ProductSelectors.selectSelectedCategory,
-    );
+    this.selectedCategory$ = this.store.select(ProductSelectors.selectSelectedCategory);
     this.error$ = this.store.select(ProductSelectors.selectError);
     this.cart$ = this.store.select(ProductSelectors.selectCart);
     this.total$ = this.store.select(ProductSelectors.selectTotal);
@@ -63,21 +51,16 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   }
 
   onCategoryChange(category: string): void {
+    this.searchText = '';
     if (category === 'All') {
-      this.store.dispatch(
-        ProductActions.loadProducts({ limit: 10, skip: 0, search: '' }),
-      );
+      this.store.dispatch(ProductActions.loadProducts({ limit: 10, skip: 0, search: '' }));
     } else {
       this.store.dispatch(ProductActions.selectCategory({ category }));
     }
   }
 
   onSearchChange(search: string): void {
-    console.log(search);
-    this.store.dispatch(ProductActions.searchProducts({ search }));
-    this.store.dispatch(
-      ProductActions.loadProducts({ limit: 10, skip: 0, search }),
-    );
+    this.store.dispatch(ProductActions.loadProducts({ limit: 10, skip: 0, search }));
   }
 
   addToCart(product: Product): void {

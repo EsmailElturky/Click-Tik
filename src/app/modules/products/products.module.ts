@@ -4,7 +4,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { ProductCardComponent } from './components/product-card/product-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { StoreModule } from '@ngrx/store';
 import { productsReducer } from './store/products.reducer';
@@ -20,6 +20,7 @@ import { ProductsEffects } from './store/products.effects';
     EffectsModule.forFeature([ProductsEffects]),
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class ProductsModule {}

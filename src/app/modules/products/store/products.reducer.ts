@@ -6,7 +6,6 @@ export interface ProductsState {
   products: Product[];
   categories: string[];
   selectedCategory: string;
-  search: string;
   total: number;
   skip: number;
   limit: number;
@@ -18,7 +17,6 @@ export const initialState: ProductsState = {
   products: [],
   categories: [],
   selectedCategory: 'All',
-  search: '',
   total: 0,
   skip: 0,
   limit: 10,
@@ -56,10 +54,7 @@ export const productsReducer = createReducer(
     ...state,
     selectedCategory: category,
   })),
-  on(ProductActions.searchProducts, (state, { search }) => ({
-    ...state,
-    search,
-  })),
+
   on(ProductActions.addToCart, (state, { product }) => ({
     ...state,
     cart: [...state.cart, product],
