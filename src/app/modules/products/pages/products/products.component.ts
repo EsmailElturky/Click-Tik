@@ -43,13 +43,19 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     this.store.dispatch(ProductActions.loadProducts({ limit: 10, skip: 0 }));
     this.store.dispatch(ProductActions.loadCategories());
     this.error$.subscribe((error) => {
-      this.toaster.showError(error);
+        if (error) {
+            this.toaster.showError(error);
+        }
     });
     this.total$.subscribe((total) => {
       this.totalPages = Math.ceil( total / this.limit);
     });
   }
 
+  /**
+   * Handles the change of product category.
+   * Clears the search text and dispatches actions to load products or select a category.
+   */
   onCategoryChange(category: string): void {
     this.searchText = '';
     if (category === 'All') {
@@ -59,6 +65,10 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * Handles the change of search text.
+   * Dispatches an action to load products based on the search query.
+   */
   onSearchChange(search: string): void {
     this.store.dispatch(ProductActions.loadProducts({ limit: 10, skip: 0, search }));
   }
@@ -73,6 +83,10 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     this.store.dispatch(ProductActions.loadProducts({ limit, skip }));
   }
 
+  /**
+   * Lifecycle hook that is called after Angular has fully initialized a component's view.
+   * Sets the template to pass to the header template.
+   */
   ngAfterViewInit() {
     this.templateToPass = this.headerTemplate;
   }

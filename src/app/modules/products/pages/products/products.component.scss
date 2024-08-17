@@ -26,6 +26,8 @@
       border-radius: 8px;
       padding: 1rem;
       gap: 1rem;
+
+      //start of the radio inputs styles
       ul {
         list-style-type: none;
         padding: 0;
@@ -79,6 +81,8 @@
         background-color: $green-light;
       }
     }
+    //end of the radio inputs styles
+
     .products-cards {
       flex: 1;
       display: flex;
@@ -104,6 +108,7 @@
   }
 }
 
+// styles for the products-menu component in the injected template
 .products-menu {
   display: flex;
   justify-content: space-between;

@@ -20,6 +20,14 @@ export class HttpService {
     private localStorage: LocalStorageService,
   ) {}
 
+  /**
+   * Sends a GET request to the specified URL.
+   * Optionally shows a loader during the request.
+   *
+   * @param {string} url - The URL to send the GET request to.
+   * @param {boolean} [showLoader=true] - Flag indicating whether to show the loader.
+   * @returns {Observable<any>} - An observable of the HTTP response.
+   */
   get(url: string, showLoader = true): Observable<any> {
     if (showLoader) {
       this.loaderService.startLoader();
@@ -38,6 +46,15 @@ export class HttpService {
     );
   }
 
+  /**
+   * Sends a POST request to the specified URL with the provided body.
+   * Optionally shows a loader during the request.
+   *
+   * @param {string} url - The URL to send the POST request to.
+   * @param {object} body - The body of the POST request.
+   * @param {boolean} [showLoader=true] - Flag indicating whether to show the loader.
+   * @returns {Observable<any>} - An observable of the HTTP response.
+   */
   post(url: string, body: {}, showLoader = true): Observable<any> {
     if (showLoader) {
       this.loaderService.startLoader();
@@ -55,6 +72,13 @@ export class HttpService {
     );
   }
 
+  /**
+   * Handles HTTP errors and performs appropriate actions based on the error status.
+   *
+   * @param {HttpErrorResponse} error - The HTTP error response object.
+   * @param {boolean} showLoader - Flag indicating whether to stop the loader.
+   * @returns {Observable<never>} - An observable that throws an error.
+   */
   handleHttpError(
     error: HttpErrorResponse,
     showLoader: boolean,
